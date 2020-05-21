@@ -91,6 +91,21 @@ Vue.createApp({
   components: {
     DemoGrid
   },
+  beforeCreate(){
+    console.log('before create')
+  },
+  setup(){
+    console.log('setup')
+  },
+  created(){
+    console.log( 'after create ')
+  },
+  beforeMount(){
+    console.log( 'before mount ')
+  },
+  mounted(){
+    console.log('mounted')
+  },
   data: () => ({
     searchQuery: '',
     gridColumns: ['name', 'power'],

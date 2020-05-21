@@ -21,6 +21,7 @@
       "@vue/*": ["packages/*/src"],
       "vue": ["packages/vue/src"]
     }
+    ,"strictPropertyInitialization": false
   },
   "include": [
     "packages/global.d.ts",
