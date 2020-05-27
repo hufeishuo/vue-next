@@ -1,4 +1,4 @@
-import { log } from './util.ts'
+import { log } from './util.js'
 
 /**
  * 派生类通常被称作 子类，基类通常被称作 超类

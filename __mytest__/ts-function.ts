@@ -1,4 +1,4 @@
-import { log } from './util.ts'
+import { log } from './util.js'
 
 function buildName(this: any, firstName: string, lastName = 'Smith') {
   return firstName + ' ' + lastName

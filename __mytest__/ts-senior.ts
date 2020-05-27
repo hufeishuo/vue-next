@@ -1,4 +1,4 @@
-import { log } from './util.ts'
+import { log } from './util.js'
 
 type A = number
 type B = string
@@ -71,3 +71,21 @@ let newVar: newType = {
 }
 
 log(newVar.b)
+
+
+
+function foo(x: string | number | boolean) {
+  if (typeof x === "string") {
+      x; // 这里x的类型是string
+      x = 1;
+      x; // 这里x的类型是number
+  }
+  x;// 这里x的类型是number | boolean
+}
+
+function bar(x: string | number) {
+  if (typeof x === "number") {
+      return;
+  }
+  x; // 这里x的类型是string
+}

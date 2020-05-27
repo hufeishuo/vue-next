@@ -2,6 +2,7 @@
 
 <!-- DemoGrid component template -->
 <script type="text/x-template" id="grid-template">
+  <h2> state.a : {{state.a}}</h2>
   <table v-if="filteredData.length">
     <thead>
       <tr>
@@ -26,8 +27,22 @@
 </script>
 <!-- DemoGrid component script -->
 <script>
+
 const DemoGrid = {
   template: '#grid-template',
+  setup(){
+    const state = window.state = Vue.reactive({a:1})
+    console.log( 'sub components: [DemoGrid] setup')
+    return {
+      state
+    }
+  },
+  beforeCreate(){
+    console.log( 'sub components: [DemoGrid] before create')
+  },
+  updated(){
+    console.log( 'sub components: [DemoGrid] updated')
+  },
   props: {
     data: Array,
     columns: Array,
@@ -76,6 +91,7 @@ const DemoGrid = {
 
 <!-- App template (in DOM) -->
 <div id="demo">
+  <h2> outer.name: {{out.outerName}}</h2>
   <form id="search">
     Search <input name="query" v-model="searchQuery">
   </form>
@@ -87,7 +103,29 @@ const DemoGrid = {
 </div>
 <!-- App script -->
 <script>
-Vue.createApp({
+let i = 10
+let req = () => {
+  i--
+  requestAnimationFrame(() => {
+    document.body.style.background = "red"
+    requestAnimationFrame(() => {
+      document.body.style.background = "blue"
+      if (i > 0) {
+        req()
+      }
+    })
+  })
+}
+
+req()
+
+  const outer = ()=>{
+    console.log(this.state)
+    return Vue.reactive({
+      outerName : 'outer variable'
+    })
+  }
+const app = window.app = Vue.createApp({
   components: {
     DemoGrid
   },
@@ -95,7 +133,11 @@ Vue.createApp({
     console.log('before create')
   },
   setup(){
-    console.log('setup')
+    console.log('setup');
+    let out = window.out = outer();
+    return {
+      out
+    }
   },
   created(){
     console.log( 'after create ')
@@ -105,6 +147,9 @@ Vue.createApp({
   },
   mounted(){
     console.log('mounted')
+  },
+  updated(){
+    console.log( ';updated')
   },
   data: () => ({
     searchQuery: '',
@@ -116,7 +161,9 @@ Vue.createApp({
       { name: 'Jet Li', power: 8000 }
     ]
   })
-}).mount('#demo')
+})
+
+app.mount('#demo')
 </script>
 
 <style>

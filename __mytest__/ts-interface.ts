@@ -1,4 +1,4 @@
-import { log, typelog } from './util.ts'
+import { log, typelog } from './util.js'
 
 function identity<T>(arg: T): T {
   return arg

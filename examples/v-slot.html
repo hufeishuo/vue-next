@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .box {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            width: 156px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .box li {
+            background: yellowgreen;
+            border: 1px solid yellow;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <ul class="box">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+    </ul>
+
+    <script>
+
+        var f = (
+            function f() {
+                return "1";
+            },
+            function g() {
+                return 2;
+            }
+        )();
+        var a = 0, b = 2;
+        (a++, function a() { }, function b() { }, console.log(typeof b, a))
+
+        console.log(typeof f);
+        console.log(typeof g);
+    </script>
+</body>
+
+</html>

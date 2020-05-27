@@ -37,7 +37,7 @@ class Singleton {
   }
 }
 
-let e = new Singleton() // 错误：Singleton的构造函数是私有的。
+// let e = new Singleton() // 错误：Singleton的构造函数是私有的。
 let v = Singleton.getInstance()
 
 function extend<First, Second>(first: First, second: Second): First & Second {
@@ -53,4 +53,16 @@ function extend<First, Second>(first: First, second: Second): First & Second {
     }
   }
   return result as First & Second
+}
+
+
+interface Error {
+  stack?: string;
+}
+
+
+interface Error {
+  code?: string;
+  path?: string;
+  stack?: string;  // OK
 }
